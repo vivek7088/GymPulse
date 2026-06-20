@@ -2,6 +2,7 @@ package com.vivek.gympulse.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import com.vivek.gympulse.entity.Member;
 
 @Entity
 @Table(name = "payments")
@@ -10,8 +11,9 @@ public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private Long memberId;
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     private Double amount;
 
@@ -26,12 +28,12 @@ public class Payment {
         return id;
     }
 
-    public Long getMemberId() {
-        return memberId;
+    public Member getMember() {
+        return member;
     }
 
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
+    public void setMember(Member member) {
+        this.member = member;
     }
 
     public Double getAmount() {

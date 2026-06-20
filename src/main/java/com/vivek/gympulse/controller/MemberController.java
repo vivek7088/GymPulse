@@ -20,4 +20,8 @@ public class MemberController {
     public List<Member> getAllMembers() {
         return memberService.getAllMembers();
     }
+    @GetMapping("/pending")
+    public List<Member> getPendingMembers() {
+        return memberService.getPendingMembers();
+    }
 }
