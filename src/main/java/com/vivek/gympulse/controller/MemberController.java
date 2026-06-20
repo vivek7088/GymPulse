@@ -28,5 +28,15 @@ public class MemberController {
     public Member renewMember(@PathVariable Long id) {
         return memberService.renewMember(id);
     }
+    @PutMapping("/update/{id}")
+    public Member updateMember(@PathVariable Long id,
+                               @RequestBody Member member) {
+        return memberService.updateMember(id, member);
+    }
+    @DeleteMapping("/delete/{id}")
+    public String deleteMember(@PathVariable Long id) {
+        memberService.deleteMember(id);
+        return "Member Deleted Successfully";
+    }
 
 }

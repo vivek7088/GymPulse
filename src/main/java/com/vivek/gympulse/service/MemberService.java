@@ -23,7 +23,25 @@ public class MemberService {
         return memberRepository.save(member);
     }
     public List<Member> getAllMembers() {
-        return memberRepository.findAll();
+
+        List<Member> members = memberRepository.findAll();
+
+        for (Member member : members) {
+
+            if (member.getExpiryDate() != null &&
+                    member.getExpiryDate().isBefore(LocalDate.now())) {
+
+                member.setStatus("EXPIRED");
+
+            } else {
+
+                member.setStatus("ACTIVE");
+            }
+
+            memberRepository.save(member);
+        }
+
+        return members;
     }
     public DashboardDTO getDashboardData() {
 
@@ -64,4 +82,23 @@ public class MemberService {
 
         return memberRepository.save(member);
     }
+    public Member updateMember(Long id, Member updatedMember) {
+
+        Member member = memberRepository.findById(id).orElseThrow();
+
+        member.setName(updatedMember.getName());
+        member.setPhone(updatedMember.getPhone());
+        member.setFeesAmount(updatedMember.getFeesAmount());
+        member.setJoiningDate(updatedMember.getJoiningDate());
+        member.setExpiryDate(updatedMember.getExpiryDate());
+        member.setStatus(updatedMember.getStatus());
+        member.setPlanType(updatedMember.getPlanType());
+        member.setPlanMonths(updatedMember.getPlanMonths());
+
+        return memberRepository.save(member);
+    }
+    public void deleteMember(Long id) {
+        memberRepository.deleteById(id);
+    }
+
 }
