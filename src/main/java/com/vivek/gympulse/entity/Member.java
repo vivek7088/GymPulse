@@ -22,6 +22,9 @@ public class Member {
     private LocalDate expiryDate;
 
     private String status;
+    private String planType;
+
+    private Integer planMonths;
 
     public Member() {
     }
@@ -76,5 +79,20 @@ public class Member {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+    public String getPlanType() {
+        return planType;
+    }
+
+    public void setPlanType(String planType) {
+        this.planType = planType;
+    }
+
+    public Integer getPlanMonths() {
+        return planMonths;
+    }
+
+    public void setPlanMonths(Integer planMonths) {
+        this.planMonths = planMonths;
     }
 }

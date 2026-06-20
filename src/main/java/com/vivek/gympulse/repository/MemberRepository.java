@@ -16,4 +16,6 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     List<Member> findPendingMembers();
     @Query("SELECT COUNT(m) FROM Member m WHERE m.expiryDate < CURRENT_DATE")
     long countPendingMembers();
+    @Query("SELECT COALESCE(SUM(m.feesAmount),0) FROM Member m WHERE m.expiryDate < CURRENT_DATE")
+    Double getTotalPendingAmount();
 }

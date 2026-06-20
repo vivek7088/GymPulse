@@ -24,4 +24,9 @@ public class MemberController {
     public List<Member> getPendingMembers() {
         return memberService.getPendingMembers();
     }
+    @PostMapping("/renew/{id}")
+    public Member renewMember(@PathVariable Long id) {
+        return memberService.renewMember(id);
+    }
+
 }
