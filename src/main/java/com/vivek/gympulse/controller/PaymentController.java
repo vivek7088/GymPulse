@@ -16,4 +16,10 @@ public class PaymentController {
     public Payment addPayment(@RequestBody Payment payment) {
         return paymentService.savePayment(payment);
     }
+    @GetMapping("/member/{memberId}")
+    public java.util.List<Payment> getPaymentsByMember(
+            @PathVariable Long memberId) {
+
+        return paymentService.getPaymentsByMember(memberId);
+    }
 }
