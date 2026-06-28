@@ -1,6 +1,7 @@
 package com.vivek.gympulse.entity;
 
 import jakarta.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "gym_owner")
@@ -19,6 +20,13 @@ public class GymOwner {
     private String email;
 
     private String password;
+    private String plan;
+
+    private LocalDate subscriptionExpiry;
+
+    private Boolean active;
+
+    private String role;
 
     public GymOwner() {
     }
@@ -65,5 +73,36 @@ public class GymOwner {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    public String getPlan() {
+        return plan;
+    }
+
+    public void setPlan(String plan) {
+        this.plan = plan;
+    }
+
+    public LocalDate getSubscriptionExpiry() {
+        return subscriptionExpiry;
+    }
+
+    public void setSubscriptionExpiry(LocalDate subscriptionExpiry) {
+        this.subscriptionExpiry = subscriptionExpiry;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

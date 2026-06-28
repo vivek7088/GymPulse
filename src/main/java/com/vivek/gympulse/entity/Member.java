@@ -91,8 +91,18 @@ public class Member {
     public Integer getPlanMonths() {
         return planMonths;
     }
+    @ManyToOne
+    @JoinColumn(name = "gym_owner_id")
+    private GymOwner gymOwner;
 
     public void setPlanMonths(Integer planMonths) {
         this.planMonths = planMonths;
+    }
+    public GymOwner getGymOwner() {
+        return gymOwner;
+    }
+
+    public void setGymOwner(GymOwner gymOwner) {
+        this.gymOwner = gymOwner;
     }
 }
